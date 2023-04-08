@@ -31,7 +31,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
           <RentModal />
           <Navbar currentUser={currentUser} />
         </ClientOnly>
-        {children}
+        <div className="pb-20 pt-28">{children}</div>
       </body>
     </html>
   );
