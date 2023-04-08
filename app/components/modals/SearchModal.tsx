@@ -1,20 +1,21 @@
 'use client';
-import React, { useCallback, useMemo, useState } from 'react';
-import { Modal } from '@/app/components/modals/Modal';
-import { useSearchModal } from '@/app/hooks/useSearchModal';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { Range } from 'react-date-range';
+import { formatISO } from 'date-fns';
 import dynamic from 'next/dynamic';
+import { useRouter, useSearchParams } from 'next/navigation';
+import qs from 'query-string';
+import { StringifiableRecord } from 'query-string/base';
+import React, { useCallback, useMemo, useState } from 'react';
+import { Range } from 'react-date-range';
+
+import { Heading } from '@/app/components/Heading';
+import { Calendar } from '@/app/components/inputs/Calendar';
+import { Counter } from '@/app/components/inputs/Counter';
 import {
   CountrySelect,
   CountrySelectValue,
 } from '@/app/components/inputs/CountrySelect';
-import qs from 'query-string';
-import { formatISO } from 'date-fns';
-import { StringifiableRecord } from 'query-string/base';
-import { Heading } from '@/app/components/Heading';
-import { Calendar } from '@/app/components/inputs/Calendar';
-import { Counter } from '@/app/components/inputs/Counter';
+import { Modal } from '@/app/components/modals/Modal';
+import { useSearchModal } from '@/app/hooks/useSearchModal';
 
 enum STEPS {
   LOCATION,
@@ -40,6 +41,7 @@ export const SearchModal = () => {
 
   const Map = useMemo(
     () => dynamic(() => import('../Map'), { ssr: false }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [location],
   );
 

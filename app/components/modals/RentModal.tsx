@@ -1,19 +1,20 @@
 'use client';
-import React, { useMemo, useState } from 'react';
-import { Modal } from '@/app/components/modals/Modal';
-import { useRentModal } from '@/app/hooks/useRentModal';
-import { Heading } from '@/app/components/Heading';
-import { categories } from '@/app/components/navbar/Categories';
-import { CategoryInput } from '@/app/components/inputs/CategoryInput';
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
-import { CountrySelect } from '@/app/components/inputs/CountrySelect';
+import axios from 'axios';
 import dynamic from 'next/dynamic';
+import { useRouter } from 'next/navigation';
+import React, { useMemo, useState } from 'react';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+
+import { Heading } from '@/app/components/Heading';
+import { CategoryInput } from '@/app/components/inputs/CategoryInput';
 import { Counter } from '@/app/components/inputs/Counter';
+import { CountrySelect } from '@/app/components/inputs/CountrySelect';
 import { ImageUpload } from '@/app/components/inputs/ImageUpload';
 import { Input } from '@/app/components/inputs/Input';
-import axios from 'axios';
-import toast from 'react-hot-toast';
-import { useRouter } from 'next/navigation';
+import { Modal } from '@/app/components/modals/Modal';
+import { categories } from '@/app/components/navbar/Categories';
+import { useRentModal } from '@/app/hooks/useRentModal';
 
 enum STEPS {
   CATEGORY,
@@ -60,6 +61,7 @@ export const RentModal = () => {
 
   const Map = useMemo(
     () => dynamic(() => import('../Map'), { ssr: false }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [location],
   );
 

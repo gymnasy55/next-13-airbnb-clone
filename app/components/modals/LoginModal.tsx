@@ -1,19 +1,19 @@
 'use client';
+import { useRouter } from 'next/navigation';
+import { signIn } from 'next-auth/react';
 import React, { useCallback } from 'react';
-import { AiFillGithub } from 'react-icons/ai';
-import { FcGoogle } from 'react-icons/fc';
 import { useState } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { AiFillGithub } from 'react-icons/ai';
+import { FcGoogle } from 'react-icons/fc';
 
-import { useLoginModal } from '@/app/hooks/useLoginModal';
-import { Modal } from '@/app/components/modals/Modal';
+import { Button } from '@/app/components/Button';
 import { Heading } from '@/app/components/Heading';
 import { Input } from '@/app/components/inputs/Input';
-import toast from 'react-hot-toast';
-import { Button } from '@/app/components/Button';
+import { Modal } from '@/app/components/modals/Modal';
+import { useLoginModal } from '@/app/hooks/useLoginModal';
 import { useRegisterModal } from '@/app/hooks/useRegisterModal';
-import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
 
 export const LoginModal = () => {
   const registerModal = useRegisterModal();

@@ -1,7 +1,9 @@
-import prisma from '@/app/libs/prismadb';
-import { getCurrentUser } from '@/app/actions/getCurrentUser';
 import { NextResponse } from 'next/server';
 import { mockSession } from 'next-auth/client/__tests__/helpers/mocks';
+
+import { getCurrentUser } from '@/app/actions/getCurrentUser';
+import prisma from '@/app/libs/prismadb';
+
 import user = mockSession.user;
 
 export const POST = async (request: Request) => {

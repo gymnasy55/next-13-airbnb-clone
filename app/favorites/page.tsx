@@ -1,8 +1,9 @@
 import React from 'react';
+
+import { getCurrentUser } from '@/app/actions/getCurrentUser';
+import { getFavoriteListings } from '@/app/actions/getFavoriteListings';
 import { ClientOnly } from '@/app/components/ClientOnly';
 import { EmptyState } from '@/app/components/EmptyState';
-import { getFavoriteListings } from '@/app/actions/getFavoriteListings';
-import { getCurrentUser } from '@/app/actions/getCurrentUser';
 import { FavoritesClient } from '@/app/favorites/FavoritesClient';
 
 const FavoritesPage = async () => {

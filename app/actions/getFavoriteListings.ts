@@ -1,5 +1,5 @@
-import prisma from '@/app/libs/prismadb';
 import { getCurrentUser } from '@/app/actions/getCurrentUser';
+import prisma from '@/app/libs/prismadb';
 import { SafeListing } from '@/app/types';
 
 export const getFavoriteListings = async (): Promise<SafeListing[]> => {
