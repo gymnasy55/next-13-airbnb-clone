@@ -1,4 +1,5 @@
 import prisma from '@/app/libs/prismadb';
+import { SafeListing, SafeReservation } from '@/app/types';
 
 interface IParams {
   listingId?: string;
@@ -6,7 +7,9 @@ interface IParams {
   authorId?: string;
 }
 
-export const getReservations = async (params: IParams) => {
+export const getReservations = async (
+  params: IParams,
+): Promise<(SafeReservation & { listing: SafeListing })[]> => {
   try {
     const { listingId, userId, authorId } = params;
     const query: any = {};

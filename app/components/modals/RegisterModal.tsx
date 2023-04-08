@@ -32,21 +32,21 @@ export const RegisterModal = () => {
     },
   });
 
+  const toggle = useCallback(() => {
+    registerModal.onClose();
+    loginModal.onOpen();
+  }, [loginModal, registerModal]);
+
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
     axios
       .post('/api/register', data)
       .then(() => {
-        registerModal.onClose();
+        toggle();
       })
       .catch((error) => toast.error('Something went wrong'))
       .finally(() => setIsLoading(false));
   };
-
-  const toggle = useCallback(() => {
-    registerModal.onClose();
-    loginModal.onOpen();
-  }, [loginModal, registerModal]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
